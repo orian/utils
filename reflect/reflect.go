@@ -7,15 +7,8 @@ import (
 
 var NotStructErr = fmt.Errorf("not a struct or pointer to struct")
 
-func GetFieldNamesP(s interface{}) []string {
-	a, err := GetFieldNames(s)
-	if err != nil {
-		panic(err)
-	}
-	return a
-}
-
-// Returns a field names using reflect package
+// GetFieldNames returns a field names of s, argument must be either struct
+// or pointer to struct.
 func GetFieldNames(s interface{}) ([]string, error) {
 	t := stdref.TypeOf(s)
 	if t.Kind() == stdref.Ptr {
@@ -30,4 +23,13 @@ func GetFieldNames(s interface{}) ([]string, error) {
 		ret = append(ret, field.Name)
 	}
 	return ret, nil
+}
+
+// GetFieldNamesP is a GetFieldNames but panics on error.
+func GetFieldNamesP(s interface{}) []string {
+	a, err := GetFieldNames(s)
+	if err != nil {
+		panic(err)
+	}
+	return a
 }
