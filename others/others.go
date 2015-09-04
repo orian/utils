@@ -2,7 +2,6 @@
 package others
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
