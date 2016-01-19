@@ -34,3 +34,5 @@ func RandString(n int) string {
 
 	return string(b)
 }
+
+// TODO, it would be even coler to just byte64 encode a random byte sequence.
