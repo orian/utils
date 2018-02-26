@@ -80,7 +80,7 @@ func InitLogrus(name, level, dir string, pid bool, rotate bool) {
 			m[v] = writer
 		}
 	}
-	logrus.AddHook(lfshook.NewHook(m))
+	logrus.AddHook(lfshook.NewHook(m, &logrus.JSONFormatter{}))
 	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true})
 	logrus.SetOutput(os.Stderr)
 	logrus.Debug("file hook added")
