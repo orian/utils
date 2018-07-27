@@ -16,7 +16,7 @@ import (
 
 const DefaultDirPerm = 0740
 
-func InitLogrus(name, level, dir string, pid, rotate bool) {
+func InitLogrus(name, level, dir string, pid, rotate, forceColors bool) {
 	lvl, err := logrus.ParseLevel(level)
 	if err != nil {
 		logrus.Fatalf("not supported log level: %s", level)
@@ -83,7 +83,7 @@ func InitLogrus(name, level, dir string, pid, rotate bool) {
 	h := lfshook.NewHook(m)
 	h.SetFormatter(&logrus.JSONFormatter{})
 	logrus.AddHook(h)
-	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: true})
+	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: forceColors})
 	logrus.SetOutput(os.Stderr)
 	logrus.Debug("file hook added")
 }
