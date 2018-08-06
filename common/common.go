@@ -53,7 +53,7 @@ func InitLogrus(name, level, dir string, pid, rotate, forceColors bool) {
 		strfobj, err := strftime.New(p)
 		if err != nil {
 			logrus.Fatalf("problem with parsing object: %s", err)
-			//return nil, errors.Wrap(err, `invalid strftime pattern`)
+			// return nil, errors.Wrap(err, `invalid strftime pattern`)
 		}
 		p = strfobj.FormatString(time.Now().UTC())
 		logrus.Infof("log: %q", p)
@@ -80,8 +80,7 @@ func InitLogrus(name, level, dir string, pid, rotate, forceColors bool) {
 			m[v] = writer
 		}
 	}
-	h := lfshook.NewHook(m)
-	h.SetFormatter(&logrus.JSONFormatter{})
+	h := lfshook.NewHook(m, &logrus.JSONFormatter{})
 	logrus.AddHook(h)
 	logrus.SetFormatter(&logrus.TextFormatter{ForceColors: forceColors})
 	logrus.SetOutput(os.Stderr)
