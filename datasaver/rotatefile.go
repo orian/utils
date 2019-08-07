@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"datainq.eu/go-common/file"
+	"github.com/orian/utils/file"
 	"github.com/golang/protobuf/proto"
 	"github.com/kisom/goutils/fileutil"
 	"github.com/miolini/datacounter"
