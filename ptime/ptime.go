@@ -7,7 +7,7 @@ type SimpleTimer struct {
 }
 
 func (s *SimpleTimer) Duration() time.Duration {
-	return time.Now().Sub(s.t0)
+	return time.Since(s.t0)
 }
 
 func (s *SimpleTimer) Reset() time.Duration {
