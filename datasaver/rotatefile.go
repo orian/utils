@@ -9,13 +9,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/orian/utils/file"
-	"github.com/golang/protobuf/proto"
 	"github.com/kisom/goutils/fileutil"
 	"github.com/miolini/datacounter"
 	cntlib "github.com/orian/counters"
 	"github.com/orian/pbio"
+	"github.com/orian/utils/file"
 	"github.com/sirupsen/logrus"
+	"google.golang.org/protobuf/proto"
 )
 
 type StringGenerator func() string

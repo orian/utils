@@ -13,10 +13,10 @@ var KEY = []byte{
 func Test_EncryptId(t *testing.T) {
 	c, _ := New(KEY)
 	var id int64 = 123123123123
-	encodedId := c.EncryptId(id)
-	pureId := c.DecryptId(encodedId)
-	if id != pureId {
-		t.Errorf("id want: %d, got %d", encodedId, pureId)
+	encodedID := c.EncryptId(id)
+	pureID := c.DecryptId(encodedID)
+	if id != pureID {
+		t.Errorf("id want: %s, got %d", encodedID, pureID)
 		t.FailNow()
 	}
 }
@@ -25,18 +25,18 @@ func Test_Encrypt(t *testing.T) {
 	c, _ := New(KEY)
 	var id int64 = 123123123123
 	var domain int64 = 321321
-	encodedId, err := c.Encrypt(domain, id)
+	encodedID, err := c.Encrypt(domain, id)
 	if err != nil {
 		t.Errorf("failed: %s", err)
 		t.Fail()
 	}
-	pureDomain, pureId := c.Decrypt(encodedId)
+	pureDomain, pureID := c.Decrypt(encodedID)
 	if domain != pureDomain {
 		t.Errorf("domain got %d, want %d", pureDomain, domain)
 		t.Fail()
 	}
-	if id != pureId {
-		t.Errorf("id got %d, want %d", pureId, id)
+	if id != pureID {
+		t.Errorf("id got %d, want %d", pureID, id)
 		t.Fail()
 	}
 }
